@@ -7,11 +7,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <list>
+#include <vector>
 using namespace std;
 
 int main () {
-  list<string> contestants;
+
+  vector<string> raffle;
   string line;
   ifstream myfile ("example.txt");
   if (myfile.is_open())
@@ -19,12 +20,20 @@ int main () {
     while ( myfile.good() )
     {
       getline (myfile,line);
-      cout << line << endl;
+      raffle.push_back(line);
     }
     myfile.close();
   }
 
   else cout << "Unable to open file";
-  cout << contestants;
+
+  cout << "The contents of fifth are: " << endl;
+  for (vector<string>::iterator it = raffle.begin(); it != raffle.end(); it++)
+  cout << *it << " " << endl;
+
+  string str = raffle[1];
+  cout << str;
+  cout << endl;
+
   return 0;
 }
